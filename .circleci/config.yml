@@ -18,13 +18,14 @@ jobs:
       - image: cimg/base:2021.04
     steps:
       - checkout
-      - run:
-          name: "Read File"
-          command: "cat aht.txt"
       - restore_cache:
           keys:
             - v1-ci-testing-{{ checksum "aht.txt" }}
             - v1-ci-testing-
+      - run
+          name: "Read File"
+          command: "cat aht.txt"
+
    
          
 workflows:
