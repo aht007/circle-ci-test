@@ -8,20 +8,19 @@ jobs:
       - checkout
       - run:
           name: "Write File"
-          command: "echo 'Hello! I am AHT!' > aht.txt"
-      - save_cache:
-          key: v1-ci-testing-{{ checksum "aht.txt" }}
+          command: echo 'Hello! I am AHT!' > ~/aht.txt
+      - persist_to_workspace:
+          root: ~/
           paths:
-            - ~/.aht.txt
+            - aht.txt
+
   read-file:
     docker:
       - image: cimg/base:2021.04
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-ci-testing-{{ checksum "aht.txt" }}
-            - v1-ci-testing-
+      - attach_workspace:
+          at: ~/
       - run
           name: "Read File"
           command: "cat aht.txt"
