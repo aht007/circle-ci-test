@@ -18,7 +18,7 @@ jobs:
       - image: cimg/base:2021.04
     steps:
       - say-author-name:
-          name: 'Mohammad Ahtasham ul Hassan'
+          author_name: 'Mohammad Ahtasham ul Hassan'
   use-pipeline-job:
     docker:
       - image: cimg/base:2021.04
