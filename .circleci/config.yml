@@ -31,3 +31,5 @@ workflows:
     jobs:
       - write-file
       - read-file
+        requires:
+          - write-file
