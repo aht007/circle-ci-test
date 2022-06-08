@@ -21,7 +21,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/
-      - run
+      - run:
           name: "Read File"
           command: "cat aht.txt"
 
