@@ -23,7 +23,7 @@ jobs:
           at: ~/
       - run:
           name: "Read File"
-          command: "cat aht.txt"
+          command: "cat ~/aht.txt"
 
    
          
