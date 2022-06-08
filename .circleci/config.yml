@@ -1,35 +1,30 @@
 version: 2.1
 
+commands:
+  say-author-name:
+    parameters:
+      name:
+        type: string
+        default: 'Ahtasham'
+     run: echo <<parameters.name>>
+  print-pipeline-id:
+    run: echo ${CIRCLE_WORKFLOW_ID}
+
 jobs:
-  write-file:
+  use-author-job:
     docker:
       - image: cimg/base:2021.04
     steps:
-      - checkout
-      - run:
-          name: "Write File"
-          command: echo 'Hello! I am AHT!' > ~/aht.txt
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - aht.txt
-
-  read-file:
+      - say-author-name:
+          name: 'Mohammad Ahtasham ul Hassan'
+   use-pipeline-job:
     docker:
       - image: cimg/base:2021.04
     steps:
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: "Read File"
-          command: cat ~/aht.txt
-
-   
+      - print-pipeline-id
          
 workflows:
   main_workflow:
     jobs:
-      - write-file
-      - read-file:
-          requires:
-            - write-file
+      - use-author-job
+      - use-pipeline-job
