@@ -6,7 +6,7 @@ commands:
       name:
         type: string
         default: 'Ahtasham'
-     run: echo <<parameters.name>>
+    run: echo <<parameters.name>>
   print-pipeline-id:
     run: echo ${CIRCLE_WORKFLOW_ID}
 
