@@ -18,12 +18,11 @@ jobs:
     docker:
       - image: cimg/base:2021.04
     steps:
-      - checkout
       - attach_workspace:
           at: ~/
       - run:
           name: "Read File"
-          command: "cat ~/aht.txt"
+          command: cat ~/aht.txt
 
    
          
