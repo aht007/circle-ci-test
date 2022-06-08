@@ -30,6 +30,6 @@ workflows:
   main_workflow:
     jobs:
       - write-file
-      - read-file
-        requires:
-          - write-file
+      - read-file:
+          requires:
+            - write-file
